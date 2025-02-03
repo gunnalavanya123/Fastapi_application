@@ -1,0 +1,13 @@
+# app
+fastapi==0.95.1
+uvicorn== 0.22.0
+sqlalchemy== 1.4.0
+psycopg==  3.1.8
+asyncpg== 0.27.0
+bcrypt== 4.0.1
+debuggy== 3.0.1
+psycopg2== 2.9.1
+
+#pip install psycopg2
+#pip install asyncpg
+

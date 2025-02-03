@@ -1,0 +1,39 @@
+version: '3'
+services:
+  shapeshifter-backend:
+    build: .
+    container_name: shapeshifter-backend
+    ports:
+      - '5001:5000'
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - '.:/shapeshifter-backend'
+    links:
+      - "shapeshifter-postgres"
+ 
+  shapeshifter-postgres:
+    image: postgres
+    container_name: shapeshifter-postgres
+    ports:
+      - '6500:5432'
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - shapeshifter-db:/var/lib/postgresql/data
+  shapeshifter-pgadmin:
+    container_name: shapeshifter-pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    # environment:
+    env_file:
+      - ./.env
+    ports:
+      - "5000:80"
+    links:
+      - "shapeshifter-postgres"
+volumes:
+  shapeshifter-db:
+  shapeshifter-backend:
