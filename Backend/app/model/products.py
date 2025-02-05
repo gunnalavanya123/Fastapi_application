@@ -1,4 +1,5 @@
 # models/product.py
+from typing import Sequence
 from sqlalchemy import Column, String, Integer, ForeignKey
 from sqlalchemy.types import DECIMAL
 from app.db.database import Base
@@ -8,7 +9,7 @@ from sqlalchemy.orm import relationship
 class Product(Base):
     __tablename__ = "products"
     
-    product_id = Column(Integer, primary_key=True)
+    product_id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(length=100), nullable=False)
     quantityinstock = Column(Integer, default=0)
     quantity_sold = Column(Integer, default=0)

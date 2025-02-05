@@ -25,10 +25,14 @@ def add_product(db: Session, product: ProductCreate, supplier_id: int):
 
     # Add and commit the product to the database
     db.add(db_product)
+    
     db.commit()
+    
     db.refresh(db_product)
-
+    
     return db_product
+    return {"message": "Product added successfully"}
+
 
 def get_all_products(db: Session):
     # Fetch all products from the database
